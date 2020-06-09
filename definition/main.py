@@ -1,8 +1,12 @@
 from definition import definition
+import time
+import os
 
 import argparse
 
-
+def _say(sentence, sleepseconds=0.5):
+    os.system("say '{0}'".format(sentence))
+    time.sleep(sleepseconds)
 
 def main():
     parser = argparse.ArgumentParser(description="Definitions")
@@ -17,8 +21,13 @@ def main():
     return_text = definition(args.word,
                 max_type_count = args.max_type_count,
                 max_def_count = args.max_type_count, force=args.force)
-    print(return_text)
     
+    print(return_text)
+    text = return_text.split("\n")
+    for t in text:
+        if len(t):
+            _say(t)
+
 
 
 if __name__ == "__main__":
