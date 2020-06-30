@@ -36,7 +36,7 @@ def definition(w, max_type_count = 2 , max_def_count = 2, force=False):
         return_text = get_data(w)
         if len(return_text):
             return return_text
-    return_text = ""
+    return_text = "Definition for {}\n".format(w)
     raw = requests.get('https://www.dictionary.com/browse/' + w).content
     soup = BeautifulSoup(raw, 'lxml')
     target_div = soup.find('div', {'class': 'css-1urpfgu e16867sm0'})
