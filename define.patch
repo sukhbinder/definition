@@ -1,0 +1,35 @@
+diff --git a/definition/__init__.py b/definition/__init__.py
+index 3ed80a6..8d2e4d8 100644
+--- a/definition/__init__.py
++++ b/definition/__init__.py
+@@ -38,11 +38,11 @@ def definition(w, max_type_count = 2 , max_def_count = 2, force=False):
+             return return_text
+     return_text = "Definition for {}\n".format(w)
+     raw = requests.get('https://www.dictionary.com/browse/' + w).content
+-    soup = BeautifulSoup(raw, 'lxml')
+-    target_div = soup.find('div', {'class': 'css-1urpfgu e16867sm0'})
++    soup = BeautifulSoup(raw, 'html.parser')
++    target_div = soup.find('div', {'class': 'css-1avshm7 e16867sm0'})
+ 
+     all_types = target_div.find_all('span', {'class': 'luna-pos'})
+-    all_contents = target_div.find_all('div', {'class': 'css-1o58fj8 e1hk9ate4'})
++    all_contents = target_div.find_all('div', {'class': 'css-10n3ydx e1hk9ate0'})
+ 
+     if not all_types:
+         # print('no results found for ' + w)
+diff --git a/definition/cache.json b/definition/cache.json
+index 18726aa..8a93a8a 100644
+--- a/definition/cache.json
++++ b/definition/cache.json
+@@ -19,5 +19,9 @@
+     "inform": "\nverb (used with object)\n1. to give or impart knowledge of a fact or circumstance to: He informed them of his arrival.\n2. to supply (oneself) with knowledge of a matter or subject: She informed herself of all the pertinent facts. \n\nverb (used without object)\n1. to give information; supply knowledge or enlightenment: a magazine that entertains more than it informs.",
+     "blatant": "\nadjective\n1. brazenly obvious; flagrant: a blatant error in simple addition; a blatant lie.\n2. offensively noisy or loud; clamorous: blatant radios.",
+     "covid": "Definition for covid\n\nnoun\n1.  coronavirus disease 2019: ",
+-    "abode": "Definition for abode\n\nnoun\n1. a place in which a person resides; residence; dwelling; habitation; home.\n2. an extended stay in a place; sojourn."
++    "abode": "Definition for abode\n\nnoun\n1. a place in which a person resides; residence; dwelling; habitation; home.\n2. an extended stay in a place; sojourn.",
++    "define": "Definition for define\n\nverb (used with object)\n1. to state or set forth the meaning of (a word, phrase, etc.): They disagreed on how to define \u201cliberal.\u201d\n2. to explain or identify the nature or essential qualities of; describe: to define judicial functions. \n\nverb (used without object)\n1. to set forth the meaning of a word, phrase, etc.; construct a definition. ",
++    "salience": "Definition for salience\n\nnoun\n1. the state or condition of being salient. \n2. a salient  or projecting object, part, or feature.",
++    "human": "Definition for human\n\nadjective\n1. of, pertaining to, characteristic of, or having the nature of people: human frailty.\n2. consisting of people: the human race. \n\nnoun\n1. a human being. ",
++    "automation": "Definition for automation\n\nnoun\n1. the technique, method, or system of operating or controlling a process by highly automatic  means, as by electronic devices, reducing human intervention to a minimum.\n2. a mechanical device, operated electronically, that functions automatically,  without continuous input from an operator."
+ }
+\ No newline at end of file

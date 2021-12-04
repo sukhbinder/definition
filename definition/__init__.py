@@ -38,11 +38,11 @@ def definition(w, max_type_count = 2 , max_def_count = 2, force=False):
             return return_text
     return_text = "Definition for {}\n".format(w)
     raw = requests.get('https://www.dictionary.com/browse/' + w).content
-    soup = BeautifulSoup(raw, 'lxml')
-    target_div = soup.find('div', {'class': 'css-1urpfgu e16867sm0'})
+    soup = BeautifulSoup(raw, 'html.parser')
+    target_div = soup.find('div', {'class': 'css-1avshm7 e16867sm0'})
 
     all_types = target_div.find_all('span', {'class': 'luna-pos'})
-    all_contents = target_div.find_all('div', {'class': 'css-1o58fj8 e1hk9ate4'})
+    all_contents = target_div.find_all('div', {'class': 'css-10n3ydx e1hk9ate0'})
 
     if not all_types:
         # print('no results found for ' + w)
